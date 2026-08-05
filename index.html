@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <!-- SEO -->
+    <title>Prim Studios | Sites, Aplicativos, Sistemas e Automações</title>
+    <meta name="description" content="A Prim Studios desenvolve sites, aplicativos, sistemas, plataformas e automações personalizadas. Transforme sua ideia em uma solução digital.">
+    <link rel="canonical" href="https://primstudios.com.br">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Prim Studios | Sites, Aplicativos, Sistemas e Automações">
+    <meta property="og:description" content="A Prim Studios desenvolve sites, aplicativos, sistemas, plataformas e automações personalizadas. Transforme sua ideia em uma solução digital.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://primstudios.com.br">
+    <!-- TODO: Substituir por uma imagem horizontal de 1200x630px -->
+    <meta property="og:image" content="https://i.postimg.cc/Xv6NsF2K/logo.png">
+
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="https://i.postimg.cc/QHQ32464/favicon.png" type="image/png">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. VARIÁVEIS E RESET
+           ========================================= */
+        :root {
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F7F8FA;
+            --bg-dark: #101828;
+            --bg-cta: #0040C1;
+
+            --text-primary: #101828;
+            --text-secondary: #667085;
+            --text-white: #FFFFFF;
+            --text-light: rgba(255,255,255,0.7);
+
+            --accent-main: #155EEF;
+            --accent-dark: #004EEB;
+            --accent-light: #EFF4FF;
+
+            --border-color: #EAECF0;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #128C7E;
+
+            --container-width: 1200px;
+            --container-padding: 24px;
+            --section-padding: clamp(48px, 8vw, 96px);
+
+            --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            --text-base: clamp(1rem, 1.1vw, 1.0625rem);
+            --text-lg: clamp(1.0625rem, 1.3vw, 1.1875rem);
+
+            --shadow-sm: 0 1px 3px rgba(16,24,40,0.06);
+            --shadow-md: 0 4px 12px rgba(16,24,40,0.06);
+            --shadow-lg: 0 12px 24px rgba(16,24,40,0.06);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        body.menu-open { overflow: hidden; }
+
+        a { text-decoration: none; color: inherit; transition: color var(--transition-fast); }
+        ul { list-style: none; }
+        img, svg { display: block; max-width: 100%; }
+        button { border: none; background: none; font-family: inherit; cursor: pointer; }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* =========================================
+           2. TIPOGRAFIA & LAYOUT
+           ========================================= */
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; }
+        h1 { font-size: clamp(2.25rem, 5vw, 3.75rem); letter-spacing: -0.03em; }
+        h2 { font-size: clamp(1.75rem, 3.5vw, 2.5rem); }
+        h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
+        p { color: var(--text-secondary); font-size: var(--text-base); }
+
+        .container { width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-padding); }
+        .section { padding: var(--section-padding) 0; }
+        .text-blue { color: var(--accent-main); }
+        .max-w-lg { max-width: 640px; }
+        .max-w-xl { max-width: 800px; }
+        .text-center { text-align: center; margin-inline: auto; }
+        .mt-16 { margin-top: 16px; }
+        .mb-16 { margin-bottom: 16px; }
+        .mb-32 { margin-bottom: 32px; }
+
+        /* =========================================
+           3. BOTÕES, BADGES & LINKS
+           ========================================= */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 8px; padding: 12px 24px; border-radius: var(--radius-full);
+            font-weight: 600; font-size: var(--text-base);
+            transition: var(--transition-normal); text-align: center;
+        }
+        .btn-primary { background: var(--accent-main); color: var(--text-white); }
+        .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-secondary { background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn-secondary:hover { background: var(--bg-secondary); border-color: #D0D5DD; }
+        .btn-white { background: var(--bg-primary); color: var(--accent-dark); font-weight: 700; }
+        .btn-white:hover { background: var(--bg-secondary); }
+        .btn-outline-light { background: transparent; color: var(--text-white); border: 1px solid rgba(255,255,255,0.3); }
+        .btn-outline-light:hover { background: rgba(255,255,255,0.1); }
+        .btn-full-mobile { width: auto; }
+
+        .badge {
+            display: inline-flex; align-items: center;
+            padding: 4px 12px; border-radius: var(--radius-full);
+            background: var(--accent-light); color: var(--accent-dark);
+            font-size: 0.8125rem; font-weight: 600; margin-bottom: 12px;
+        }
+        .badge-dark { background: rgba(255,255,255,0.1); color: var(--text-white); }
+
+        .link-arrow {
+            display: inline-flex; align-items: center; gap: 4px;
+            color: var(--accent-main); font-weight: 600; font-size: 0.9375rem;
+        }
+        .link-arrow svg { transition: transform var(--transition-fast); }
+        .link-arrow:hover svg { transform: translateX(4px); }
+
+        .status-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.8125rem; font-weight: 500; color: var(--text-secondary);
+        }
+        .status-tag::before {
+            content: ''; width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent-main);
+        }
+
+        /* =========================================
+           4. CABEÇALHO
+           ========================================= */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            background: rgba(255,255,255,0.88); backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+            height: 72px; display: flex; align-items: center;
+        }
+        .header.scrolled { border-bottom-color: var(--border-color); box-shadow: var(--shadow-sm); }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
+
+        .logo img { height: 44px; width: auto; }
+        .nav { display: flex; align-items: center; gap: 32px; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { font-weight: 500; font-size: 0.9375rem; color: var(--text-secondary); }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-cta { display: flex; }
+
+        .menu-btn {
+            display: none; flex-direction: column; justify-content: space-between;
+            width: 24px; height: 18px; z-index: 1001;
+        }
+        .menu-btn span {
+            display: block; width: 100%; height: 2px;
+            background: var(--text-primary); border-radius: 2px;
+            transition: var(--transition-normal);
+        }
+        .menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+        /* Mobile CTA inside nav (hidden on desktop) */
+        .nav-cta-mobile { display: none !important; }
+
+        /* =========================================
+           5. HERO
+           ========================================= */
+        .hero {
+            padding-top: calc(72px + clamp(32px, 6vw, 56px));
+            padding-bottom: clamp(32px, 6vw, 56px);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -30%; left: 50%; transform: translateX(-50%);
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(21,94,239,0.04) 0%, transparent 70%);
+            border-radius: 50%; pointer-events: none; z-index: -1;
+        }
+        .hero-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .hero-content { display: flex; flex-direction: column; }
+        .hero h1 { margin-bottom: 20px; }
+        .hero .subtitle { font-size: var(--text-lg); margin-bottom: 8px; max-width: 520px; }
+        .hero .complementary { font-size: var(--text-base); margin-bottom: 32px; max-width: 480px; opacity: 0.8; }
+        .hero-buttons { display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+        .hero-features {
+            display: flex; gap: 16px; flex-wrap: wrap;
+            font-size: 0.8125rem; color: var(--text-secondary);
+        }
+        .hero-features span { display: flex; align-items: center; gap: 6px; }
+        .hero-features span:not(:last-child)::after { content: '·'; margin-left: 12px; color: var(--border-color); }
+
+        /* Mockup realista (dashboard) */
+        .hero-mockup { position: relative; }
+        .mockup-window {
+            background: var(--bg-primary); border-radius: 14px;
+            box-shadow: 0 20px 40px rgba(16,24,40,0.10), 0 0 0 1px rgba(16,24,40,0.06);
+            overflow: hidden; display: flex; flex-direction: column; height: 360px;
+        }
+        .mockup-toolbar {
+            height: 40px; background: #FCFCFD; border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; padding: 0 16px; gap: 6px;
+        }
+        .mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+        .mockup-dot-red { background: #F04438; }
+        .mockup-dot-yellow { background: #FDB022; }
+        .mockup-dot-green { background: #12B76A; }
+        .mockup-body { display: flex; flex: 1; min-height: 0; }
+        .mockup-sidebar {
+            width: 180px; background: #FCFCFD; border-right: 1px solid var(--border-color);
+            padding: 16px 12px; display: flex; flex-direction: column; gap: 4px;
+            font-size: 11px; color: var(--text-secondary);
+        }
+        .mockup-nav-item {
+            padding: 6px 10px; border-radius: 6px; display: flex; align-items: center; gap: 8px;
+        }
+        .mockup-nav-item.active { background: var(--accent-light); color: var(--accent-main); font-weight: 600; }
+        .mockup-nav-icon { width: 14px; height: 14px; border-radius: 3px; background: currentColor; opacity: 0.3; }
+        .mockup-nav-item.active .mockup-nav-icon { opacity: 0.6; }
+        .mockup-main {
+            flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 16px;
+            background: linear-gradient(180deg, #fff 0%, #F9FAFB 100%); overflow: hidden;
+        }
+        .mockup-main-title { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+        .mockup-metrics { display: flex; gap: 12px; }
+        .mockup-metric-card {
+            flex: 1; background: var(--bg-primary); border: 1px solid var(--border-color);
+            border-radius: 10px; padding: 14px; box-shadow: var(--shadow-sm);
+        }
+        .mockup-metric-label { font-size: 10px; color: var(--text-secondary); margin-bottom: 4px; }
+        .mockup-metric-value { font-size: 18px; font-weight: 700; color: var(--text-primary); }
+        .mockup-metric-change { font-size: 10px; color: #12B76A; font-weight: 600; }
+        .mockup-chart-area {
+            flex: 1; background: var(--bg-primary); border: 1px solid var(--border-color);
+            border-radius: 10px; padding: 14px; box-shadow: var(--shadow-sm);
+            display: flex; flex-direction: column; min-height: 0;
+        }
+        .mockup-chart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .mockup-chart-label { font-size: 11px; font-weight: 600; color: var(--text-primary); }
+        .mockup-chart-period { font-size: 9px; color: var(--text-secondary); background: var(--bg-secondary); padding: 2px 8px; border-radius: 4px; }
+        .mockup-bars { display: flex; align-items: flex-end; gap: 6px; flex: 1; padding-top: 8px; }
+        .mockup-bar {
+            flex: 1; border-radius: 3px 3px 0 0; background: var(--accent-light);
+            position: relative; min-height: 8px;
+        }
+        .mockup-bar.highlight { background: var(--accent-main); }
+
+        /* Painel flutuante menor */
+        .mockup-float {
+            position: absolute; bottom: -16px; right: -16px; width: 200px;
+            background: var(--bg-primary); border-radius: 16px;
+            box-shadow: 0 16px 32px rgba(16,24,40,0.12), 0 0 0 1px rgba(16,24,40,0.05);
+            padding: 16px; z-index: 3;
+        }
+        .mockup-float-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .mockup-float-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-light); }
+        .mockup-float-name { font-size: 11px; font-weight: 600; color: var(--text-primary); }
+        .mockup-float-role { font-size: 9px; color: var(--text-secondary); }
+        .mockup-float-stat {
+            background: var(--bg-secondary); border-radius: 8px; padding: 10px;
+            margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .mockup-float-stat-label { font-size: 9px; color: var(--text-secondary); }
+        .mockup-float-stat-value { font-size: 13px; font-weight: 700; color: var(--text-primary); }
+
+        /* =========================================
+           6. BARRA DE CONFIANÇA
+           ========================================= */
+        .trust-bar {
+            border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);
+            padding: 24px 0;
+        }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center; }
+        .trust-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        .trust-icon {
+            width: 40px; height: 40px; border-radius: 50%; background: var(--bg-secondary);
+            display: flex; align-items: center; justify-content: center; color: var(--text-primary);
+        }
+        .trust-item p { font-size: 0.8125rem; font-weight: 600; color: var(--text-primary); margin: 0; }
+
+        /* =========================================
+           7. SERVIÇOS
+           ========================================= */
+        .services-header { margin-bottom: 48px; }
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .service-card {
+            background: var(--bg-primary); border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg); padding: 32px;
+            transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+            display: flex; flex-direction: column; height: 100%;
+        }
+        .service-card:hover { box-shadow: var(--shadow-lg); border-color: #D0D5DD; }
+        .service-card:nth-child(1) { border-top: 3px solid var(--accent-main); }
+        .service-card:nth-child(2) { border-top: 3px solid #444CE7; }
+        .service-card:nth-child(3) { border-top: 3px solid #3538CD; }
+        .service-card:nth-child(4) { border-top: 3px solid #0E9384; }
+        .service-icon-wrapper { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+        .service-icon {
+            width: 48px; height: 48px; border-radius: 12px; background: var(--accent-light);
+            color: var(--accent-main); display: flex; align-items: center; justify-content: center;
+        }
+        .service-card:nth-child(2) .service-icon { background: #EEF4FF; color: #444CE7; }
+        .service-card:nth-child(3) .service-icon { background: #E0EAFF; color: #3538CD; }
+        .service-card:nth-child(4) .service-icon { background: #F0FDF9; color: #0E9384; }
+        .service-number { font-family: monospace; font-size: 1rem; color: var(--text-secondary); opacity: 0.4; }
+        .service-card h3 { margin-bottom: 8px; }
+        .service-card > p { margin-bottom: 20px; font-size: 0.9375rem; }
+        .service-list { margin-top: auto; margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px; }
+        .service-list li { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--text-secondary); }
+        .service-list li svg { flex-shrink: 0; }
+
+        /* =========================================
+           8. SOLUÇÕES PERSONALIZADAS
+           ========================================= */
+        .custom-section { border-radius: var(--radius-lg); padding: clamp(48px, 6vw, 72px) 32px; text-align: center; }
+        .custom-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 32px 0; }
+
+        /* =========================================
+           9. PROJETOS
+           ========================================= */
+        .projects-header { margin-bottom: 56px; }
+        .projects-grid { display: flex; flex-direction: column; gap: 64px; }
+        .project-item { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .project-item:nth-child(even) .project-visual { order: 2; }
+        .project-item:nth-child(even) .project-info { order: 1; }
+
+        .project-visual {
+            background: var(--bg-secondary); border-radius: var(--radius-lg);
+            aspect-ratio: 4/3; overflow: hidden; border: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: center; position: relative;
+        }
+
+        /* Liberta mockup */
+        .liberta-mockup {
+            width: 85%; height: 85%; background: #fff; border-radius: 12px;
+            box-shadow: var(--shadow-md); border: 1px solid var(--border-color);
+            overflow: hidden; display: flex; flex-direction: column;
+        }
+        .liberta-toolbar { height: 28px; background: #F9FAFB; border-bottom: 1px solid var(--border-color); }
+        .liberta-body { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+        .liberta-balance {
+            background: var(--accent-light); border-radius: 10px; padding: 16px;
+            text-align: center;
+        }
+        .liberta-balance-label { font-size: 9px; color: var(--accent-dark); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+        .liberta-balance-value { font-size: 24px; font-weight: 700; color: var(--accent-dark); }
+        .liberta-cats { display: flex; gap: 8px; }
+        .liberta-cat {
+            flex: 1; background: var(--bg-secondary); border-radius: 8px; padding: 10px;
+            font-size: 9px; color: var(--text-secondary);
+        }
+        .liberta-cat-val { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-top: 2px; }
+        .liberta-chart { display: flex; align-items: flex-end; gap: 4px; height: 60px; }
+        .liberta-bar { flex: 1; border-radius: 3px 3px 0 0; background: var(--accent-light); }
+
+        /* AssistX mockup */
+        .assistx-mockup {
+            width: 85%; height: 85%; background: #fff; border-radius: 12px;
+            box-shadow: var(--shadow-md); border: 1px solid var(--border-color);
+            overflow: hidden; display: flex;
+        }
+        .assistx-sidebar {
+            width: 50px; background: #1D2939; display: flex; flex-direction: column;
+            align-items: center; padding: 12px 0; gap: 12px;
+        }
+        .assistx-sidebar-dot { width: 24px; height: 24px; border-radius: 6px; background: rgba(255,255,255,0.1); }
+        .assistx-sidebar-dot.active { background: var(--accent-main); }
+        .assistx-main { flex: 1; padding: 16px; display: flex; flex-direction: column; gap: 10px; overflow: hidden; }
+        .assistx-header-row { display: flex; justify-content: space-between; align-items: center; }
+        .assistx-title { font-size: 12px; font-weight: 700; color: var(--text-primary); }
+        .assistx-badge-online { font-size: 8px; background: #ECFDF3; color: #12B76A; padding: 2px 6px; border-radius: 4px; font-weight: 600; }
+        .assistx-ticket {
+            background: var(--bg-secondary); border-radius: 8px; padding: 10px;
+            display: flex; gap: 8px; align-items: center;
+        }
+        .assistx-ticket-avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--accent-light); flex-shrink: 0; }
+        .assistx-ticket-text { font-size: 9px; color: var(--text-secondary); }
+        .assistx-ticket-name { font-size: 10px; font-weight: 600; color: var(--text-primary); }
+        .assistx-ticket-tag { font-size: 7px; background: #FEF3F2; color: #F04438; padding: 1px 4px; border-radius: 3px; font-weight: 600; margin-left: auto; flex-shrink: 0; }
+        .assistx-ticket-tag.pending { background: #FFFAEB; color: #F79009; }
+        .assistx-ticket-tag.resolved { background: #ECFDF3; color: #12B76A; }
+
+        /* PrimeDraw mockup */
+        .primedraw-mockup {
+            width: 180px; height: 360px; background: #fff; border-radius: 28px;
+            border: 6px solid #344054; box-shadow: var(--shadow-lg);
+            display: flex; flex-direction: column; overflow: hidden;
+        }
+        .primedraw-status { height: 20px; background: #344054; }
+        .primedraw-header {
+            height: 44px; background: var(--accent-main); display: flex;
+            align-items: center; justify-content: center;
+            color: #fff; font-size: 11px; font-weight: 700;
+        }
+        .primedraw-body { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+        .primedraw-msg {
+            padding: 8px 10px; border-radius: 10px; font-size: 9px;
+            max-width: 85%; line-height: 1.4;
+        }
+        .primedraw-msg.incoming { background: var(--bg-secondary); color: var(--text-secondary); align-self: flex-start; border-bottom-left-radius: 2px; }
+        .primedraw-msg.outgoing { background: var(--accent-light); color: var(--accent-dark); align-self: flex-end; border-bottom-right-radius: 2px; }
+
+        .project-info h3 { font-size: clamp(1.5rem, 3vw, 1.875rem); margin-bottom: 12px; }
+        .project-info > p { margin-bottom: 20px; }
+        .project-features { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+        .project-features li {
+            font-size: 0.875rem; color: var(--text-primary); font-weight: 500;
+            display: flex; align-items: center; gap: 6px;
+        }
+        .project-features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-main); }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+        .tech-tag {
+            font-size: 0.6875rem; font-weight: 600; padding: 3px 8px;
+            border-radius: 4px; background: var(--bg-secondary); color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .github-banner {
+            margin-top: 64px; padding: 32px;
+            background: var(--bg-secondary); border-radius: var(--radius-lg);
+            display: flex; align-items: center; justify-content: space-between;
+            border: 1px solid var(--border-color);
+        }
+        .github-banner h4 { margin-bottom: 6px; }
+        .github-banner p { font-size: 0.875rem; }
+
+        /* =========================================
+           10. PROCESSO
+           ========================================= */
+        .process-header { margin-bottom: 48px; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+        .process-grid::before {
+            content: ''; position: absolute; top: 20px; left: 20px; right: 20px;
+            height: 1px; background: var(--border-color); z-index: 0;
+        }
+        .process-step { position: relative; z-index: 1; }
+        .step-number {
+            width: 40px; height: 40px; background: var(--bg-primary); border: 1px solid var(--border-color);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-weight: 600; font-family: monospace; font-size: 1rem;
+            margin-bottom: 16px; color: var(--text-secondary);
+        }
+        .process-step h3 { font-size: 1.125rem; margin-bottom: 8px; }
+        .process-step p { font-size: 0.875rem; }
+
+        /* =========================================
+           11. SOBRE
+           ========================================= */
+        .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: center; }
+        .about-image-wrapper { position: relative; }
+        .about-image-wrapper::before {
+            content: ''; position: absolute; inset: -16px;
+            background: var(--bg-secondary); border-radius: var(--radius-lg); z-index: 0;
+        }
+        .about-image {
+            position: relative; z-index: 1; border-radius: 14px;
+            overflow: hidden; aspect-ratio: 3/4; box-shadow: var(--shadow-lg);
+        }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
+        .about-content p { margin-bottom: 14px; }
+        .about-content h2 { margin-bottom: 20px; }
+        .about-differentials {
+            margin-top: 24px; margin-bottom: 32px; padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+        }
+        .about-differentials li { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-weight: 500; font-size: 0.9375rem; }
+        .about-differentials svg { color: var(--accent-main); flex-shrink: 0; }
+
+        /* =========================================
+           12. FAQ
+           ========================================= */
+        .faq-container { max-width: 720px; margin: 0 auto; }
+        .faq-header { margin-bottom: 40px; }
+        .faq-item { border-bottom: 1px solid var(--border-color); }
+        .faq-item:first-child { border-top: 1px solid var(--border-color); }
+        .faq-button {
+            width: 100%; display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; font-size: 1rem; font-weight: 600;
+            color: var(--text-primary); text-align: left;
+        }
+        .faq-icon {
+            flex-shrink: 0; width: 20px; height: 20px;
+            position: relative; color: var(--text-secondary);
+        }
+        .faq-icon::before, .faq-icon::after {
+            content: ''; position: absolute; background: currentColor;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            transition: transform var(--transition-normal), opacity var(--transition-normal);
+        }
+        .faq-icon::before { width: 14px; height: 2px; }
+        .faq-icon::after { height: 14px; width: 2px; }
+        .faq-button[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height var(--transition-normal); }
+        .faq-answer-inner { padding-bottom: 20px; }
+        .faq-answer-inner p { font-size: 0.9375rem; }
+
+        /* =========================================
+           13. CTA FINAL
+           ========================================= */
+        .cta-final {
+            background: var(--bg-cta); border-radius: var(--radius-lg);
+            padding: clamp(48px, 8vw, 80px) 32px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .cta-final::before {
+            content: ''; position: absolute; top: -50%; right: -20%;
+            width: 60%; height: 200%; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .cta-final h2 { color: var(--text-white); position: relative; }
+        .cta-final p { color: var(--text-light); position: relative; }
+        .cta-actions { position: relative; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+        .cta-subtext { font-size: 0.8125rem; color: rgba(255,255,255,0.5); }
+
+        /* =========================================
+           14. RODAPÉ
+           ========================================= */
+        .site-footer {
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid var(--border-color);
+            padding: 48px 0 24px;
+            color: var(--text-primary);
+        }
+        .site-footer .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .site-footer .footer-brand p {
+            margin-top: 12px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        .site-footer .footer-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+        }
+        .site-footer .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .site-footer .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            transition: color var(--transition-fast);
+        }
+        .site-footer .footer-links a:hover {
+            color: var(--accent-main);
+        }
+        .site-footer .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+        .site-footer .footer-socials {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+        .site-footer .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-secondary);
+            transition: fill var(--transition-fast);
+        }
+        .site-footer .social-icon:hover {
+            fill: var(--accent-main);
+        }
+        @media (max-width: 768px) {
+            .site-footer .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        /* =========================================
+           15. WHATSAPP FLUTUANTE
+           ========================================= */
+        .fab-whatsapp {
+            position: fixed; bottom: 28px; right: 28px;
+            background: var(--whatsapp); color: #fff; border-radius: var(--radius-full);
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 20px; box-shadow: var(--shadow-lg);
+            z-index: 999; font-weight: 600; font-size: 0.875rem;
+            transition: var(--transition-normal);
+        }
+        .fab-whatsapp:hover { background: var(--whatsapp-dark); transform: translateY(-2px); color: #fff; }
+
+        /* =========================================
+           16. ANIMAÇÕES
+           ========================================= */
+        .fade-in {
+            opacity: 0; transform: translateY(16px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* =========================================
+           17. RESPONSIVO
+           ========================================= */
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+            .hero-layout { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { align-items: center; }
+            .hero .subtitle, .hero .complementary { max-width: 600px; }
+            .hero-buttons { justify-content: center; }
+            .hero-features { justify-content: center; }
+
+            /* Mockup reduzido, não escondido */
+            .hero-mockup { max-width: 560px; margin: 32px auto 0; }
+            .mockup-window { height: 260px; }
+            .mockup-sidebar { width: 120px; }
+            .mockup-float { display: none; }
+
+            .about-grid { gap: 40px; }
+            .custom-section { padding: 48px 24px; }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-cta { display: none !important; }
+            .menu-btn { display: flex; }
+
+            .nav-links {
+                display: flex; flex-direction: column;
+                position: fixed; top: 72px; left: 0;
+                width: 100%; height: calc(100vh - 72px); height: calc(100dvh - 72px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                padding: 40px 24px; gap: 24px; z-index: 1000;
+                overflow-y: auto;
+                opacity: 0;
+                transform: translateY(-10px);
+                visibility: hidden;
+                transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s;
+            }
+            .nav-links.active {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+            }
+            .nav-links a { font-size: 1.125rem; width: 100%; text-align: center; padding: 12px 0; border-bottom: 1px solid var(--border-color); }
+            .nav-links .nav-cta-mobile { display: flex !important; width: 100%; margin-top: 8px; justify-content: center; border-bottom: none; }
+
+            /* Hero Mockup Mobile Sizing */
+            .hero-mockup { max-width: 100%; margin-top: 24px; }
+            .mockup-window { height: 260px; }
+            .mockup-sidebar { display: none; }
+            .mockup-metrics { gap: 8px; }
+            .mockup-metric-card { padding: 10px; }
+            .mockup-metric-label { font-size: 9px; margin-bottom: 2px; }
+            .mockup-metric-value { font-size: 13px; font-weight: 700; }
+            .mockup-metric-change { font-size: 9px; }
+            .mockup-chart-area { padding: 10px; }
+            .mockup-chart-label { font-size: 10px; }
+            .mockup-chart-period { font-size: 8px; padding: 1px 6px; }
+            .mockup-bars { gap: 4px; padding-top: 4px; }
+
+            .hero-buttons { flex-direction: column; width: 100%; align-items: center; }
+            .btn-full-mobile { width: 100%; max-width: 320px; }
+
+            .trust-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 24px; }
+
+            /* Project items mobile scaling */
+            .project-item { grid-template-columns: 1fr; gap: 24px; }
+            .project-item:nth-child(even) .project-visual { order: 1; }
+            .project-item:nth-child(even) .project-info { order: 2; }
+            .project-visual { aspect-ratio: 1.2; min-height: 250px; padding: 20px 0; }
+            .project-features { grid-template-columns: 1fr; }
+
+            /* Liberta Mockup Mobile Sizing */
+            .liberta-body { padding: 10px; gap: 8px; }
+            .liberta-balance { padding: 10px; }
+            .liberta-balance-value { font-size: 18px; }
+            .liberta-cats { gap: 4px; }
+            .liberta-cat { padding: 6px; }
+            .liberta-cat-val { font-size: 11px; }
+            .liberta-chart { height: 45px; }
+
+            /* AssistX Mockup Mobile Sizing */
+            .assistx-sidebar { width: 36px; padding: 8px 0; gap: 8px; }
+            .assistx-sidebar-dot { width: 18px; height: 18px; border-radius: 4px; }
+            .assistx-main { padding: 10px; gap: 6px; }
+            .assistx-ticket { padding: 6px; gap: 6px; }
+            .assistx-ticket-avatar { width: 20px; height: 20px; }
+            .assistx-ticket-name { font-size: 9px; }
+            .assistx-ticket-text { font-size: 8px; }
+            .assistx-ticket-tag { font-size: 6px; padding: 1px 3px; }
+
+            .github-banner { flex-direction: column; gap: 20px; text-align: center; }
+
+            .process-grid { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+            .process-grid::before { display: none; }
+
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image-wrapper { order: -1; max-width: 320px; margin: 0 auto; }
+            .about-image { aspect-ratio: 4/5; }
+
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+
+            .fab-whatsapp {
+                width: 50px;
+                height: 50px;
+                padding: 0;
+                justify-content: center;
+                bottom: env(safe-area-inset-bottom, 20px);
+                right: 20px;
+            }
+            .fab-whatsapp span { display: none; }
+        }
+
+        /* Small phones */
+        @media (max-width: 375px) {
+            :root { --container-padding: 16px; }
+            .hero h1 { font-size: 2rem; }
+            .process-grid { grid-template-columns: 1fr; }
+            .primedraw-mockup { width: 160px; height: 320px; }
+        }
+
+        /* Focus styles for accessibility */
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid var(--accent-main);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo" aria-label="Prim Studios — Página inicial">
+                    <img src="https://i.postimg.cc/Xv6NsF2K/logo.png" alt="Prim Studios" width="110" height="44">
+            </a>
+
+            <nav class="nav" aria-label="Navegação principal">
+                <div class="nav-links" id="navLinks" role="navigation">
+                    <a href="#servicos">Serviços</a>
+                    <a href="#projetos">Projetos</a>
+                    <a href="#processo">Processo</a>
+                    <a href="#sobre">Sobre</a>
+                    <a href="https://wa.me/5511980125144?text=Olá%2C%20Felipe!%20Conheci%20a%20Prim%20Studios%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" class="btn btn-primary nav-cta-mobile">Solicitar orçamento</a>
+                </div>
+            </nav>
+
+            <div class="nav-cta">
+                <a href="https://wa.me/5511980125144?text=Olá%2C%20Felipe!%20Conheci%20a%20Prim%20Studios%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Solicitar orçamento</a>
+            </div>
+
+            <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Abrir menu de navegação">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="inicio" class="hero">
+            <div class="container">
+                <div class="hero-layout">
+                    <div class="hero-content fade-in">
+                        <div class="badge">Desenvolvimento digital sob medida</div>
+                        <h1>Transformamos ideias em <span class="text-blue">produtos digitais.</span></h1>
+                        <p class="subtitle">Criamos sites, aplicativos, sistemas, automações e plataformas personalizadas para empresas, profissionais e novos negócios.</p>
+                        <p class="complementary">Você explica a ideia. Nós cuidamos de tudo — da estratégia até a publicação.</p>
+
+                        <div class="hero-buttons">
+                            <a href="https://wa.me/5511980125144?text=Olá%2C%20Felipe!%20Tenho%20uma%20ideia%20de%20projeto%20e%20gostaria%20de%20apresentá-la." target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full-mobile">Apresentar minha ideia</a>
+                            <a href="#servicos" class="btn btn-secondary btn-full-mobile">Ver soluções</a>
+                        </div>
+
+                        <div class="hero-features">
+                            <span>Atendimento remoto para todo o Brasil</span>
+                            <span>Projetos personalizados</span>
+                            <span>Suporte pós-entrega</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-mockup fade-in">
+                        <div class="mockup-window">
+                            <div class="mockup-toolbar">
+                                <div class="mockup-dot mockup-dot-red"></div>
+                                <div class="mockup-dot mockup-dot-yellow"></div>
+                                <div class="mockup-dot mockup-dot-green"></div>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="mockup-sidebar">
+                                    <div class="mockup-nav-item active"><div class="mockup-nav-icon"></div>Dashboard</div>
+                                    <div class="mockup-nav-item"><div class="mockup-nav-icon"></div>Clientes</div>
+                                    <div class="mockup-nav-item"><div class="mockup-nav-icon"></div>Projetos</div>
+                                    <div class="mockup-nav-item"><div class="mockup-nav-icon"></div>Finanças</div>
+                                </div>
+                                <div class="mockup-main">
+                                    <div class="mockup-main-title">Visão geral</div>
+                                    <div class="mockup-metrics">
+                                        <div class="mockup-metric-card">
+                                            <div class="mockup-metric-label">Visão geral</div>
+                                            <div class="mockup-metric-value">Projetos ativos</div>
+                                            <div class="mockup-metric-change">Em andamento</div>
+                                        </div>
+                                        <div class="mockup-metric-card">
+                                            <div class="mockup-metric-label">Métricas</div>
+                                            <div class="mockup-metric-value">Visão geral</div>
+                                            <div class="mockup-metric-change">Acompanhamento</div>
+                                        </div>
+                                    </div>
+                                    <div class="mockup-chart-area">
+                                        <div class="mockup-chart-header">
+                                            <div class="mockup-chart-label">Entregas 2026</div>
+                                            <div class="mockup-chart-period">Últimos 6 meses</div>
+                                        </div>
+                                        <div class="mockup-bars">
+                                            <div class="mockup-bar" style="height:35%"></div>
+                                            <div class="mockup-bar" style="height:55%"></div>
+                                            <div class="mockup-bar" style="height:40%"></div>
+                                            <div class="mockup-bar highlight" style="height:85%"></div>
+                                            <div class="mockup-bar" style="height:60%"></div>
+                                            <div class="mockup-bar" style="height:70%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mockup-float">
+                            <div class="mockup-float-header">
+                                <div class="mockup-float-avatar"></div>
+                                <div>
+                                    <div class="mockup-float-name">Felipe A.</div>
+                                    <div class="mockup-float-role">Desenvolvedor</div>
+                                </div>
+                            </div>
+                            <div class="mockup-float-stat">
+                                <div class="mockup-float-stat-label">Exemplo de</div>
+                                <div class="mockup-float-stat-value">Dashboard</div>
+                            </div>
+                            <div class="mockup-float-stat">
+                                <div class="mockup-float-stat-label">Acompanhamento</div>
+                                <div class="mockup-float-stat-value">Geral</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BARRA DE CONFIANÇA -->
+        <div class="trust-bar fade-in">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                        </div>
+                        <p>Soluções sob medida</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+                        </div>
+                        <p>Design responsivo</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                        <p>Atendimento direto</p>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                        </div>
+                        <p>Preparado para crescer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SERVIÇOS -->
+        <section id="servicos" class="section bg-secondary">
+            <div class="container">
+                <div class="services-header max-w-xl fade-in">
+                    <h2>O que desenvolvemos</h2>
+                    <p>Desenvolvemos soluções digitais com tecnologias escolhidas de acordo com as necessidades de cada projeto.</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+                            <span class="service-number">01</span>
+                        </div>
+                        <h3>Experiências digitais</h3>
+                        <p>Sua presença online pensada para atrair visitantes e gerar resultados.</p>
+                        <ul class="service-list">
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Sites institucionais</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Landing pages</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Lojas virtuais</li>
+                        </ul>
+                        <a href="https://wa.me/5511980125144?text=Olá!%20Tenho%20interesse%20em%20criar%20um%20site%20ou%20landing%20page." target="_blank" rel="noopener noreferrer" class="link-arrow">Falar sobre esse serviço <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg></div>
+                            <span class="service-number">02</span>
+                        </div>
+                        <h3>Aplicativos e plataformas</h3>
+                        <p>Produtos acessíveis de qualquer lugar, feitos para facilitar a vida dos seus clientes.</p>
+                        <ul class="service-list">
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Aplicativos móveis</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Portais e plataformas</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Áreas para clientes</li>
+                        </ul>
+                        <a href="https://wa.me/5511980125144?text=Olá!%20Tenho%20interesse%20em%20desenvolver%20um%20aplicativo%20ou%20plataforma." target="_blank" rel="noopener noreferrer" class="link-arrow">Falar sobre esse serviço <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+                            <span class="service-number">03</span>
+                        </div>
+                        <h3>Sistemas personalizados</h3>
+                        <p>Ferramentas internas para organizar e agilizar o dia a dia da sua empresa.</p>
+                        <ul class="service-list">
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Painéis administrativos</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Sistemas internos</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Ferramentas sob medida</li>
+                        </ul>
+                        <a href="https://wa.me/5511980125144?text=Olá!%20Preciso%20de%20um%20sistema%20personalizado." target="_blank" rel="noopener noreferrer" class="link-arrow">Falar sobre esse serviço <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+
+                    <div class="service-card fade-in">
+                        <div class="service-icon-wrapper">
+                            <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+                            <span class="service-number">04</span>
+                        </div>
+                        <h3>Automações e integrações</h3>
+                        <p>Menos trabalho manual, mais eficiência. Conectamos sistemas e automatizamos processos.</p>
+                        <ul class="service-list">
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Bots para atendimento</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Integrações via API</li>
+                            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Automação de processos</li>
+                        </ul>
+                        <a href="https://wa.me/5511980125144?text=Olá!%20Gostaria%20de%20falar%20sobre%20automações%20e%20integrações." target="_blank" rel="noopener noreferrer" class="link-arrow">Falar sobre esse serviço <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUÇÃO PERSONALIZADA -->
+        <section class="section">
+            <div class="container">
+                <div class="custom-section bg-dark fade-in">
+                    <h2 class="max-w-xl text-center">Não encontrou o que precisa?</h2>
+                    <p class="max-w-lg text-center mt-16">A Prim Studios também desenvolve ferramentas, plataformas e sistemas totalmente personalizados. Se a sua ideia não cabe em uma categoria, criamos a solução.</p>
+                    <div class="custom-tags">
+                        <span class="badge badge-dark">Sistema interno</span>
+                        <span class="badge badge-dark">Plataforma para clientes</span>
+                        <span class="badge badge-dark">Aplicativo de serviços</span>
+                        <span class="badge badge-dark">Dashboard</span>
+                        <span class="badge badge-dark">Área de membros</span>
+                    </div>
+                    <a href="https://wa.me/5511980125144?text=Olá!%20Tenho%20uma%20ideia%20diferente%20e%20gostaria%20de%20conversar%20sobre%20uma%20solução%20personalizada." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Contar minha ideia</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJETOS -->
+        <section id="projetos" class="section">
+            <div class="container">
+                <div class="projects-header max-w-xl fade-in">
+                    <h2>Projetos em destaque</h2>
+                    <p>Conheça algumas das soluções que já desenvolvemos.</p>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Liberta -->
+                    <div class="project-item fade-in">
+                        <div class="project-visual">
+                            <div class="liberta-mockup">
+                                <div class="liberta-toolbar"></div>
+                                <div class="liberta-body">
+                                    <div class="liberta-balance">
+                                        <div class="liberta-balance-label">Saldo disponível</div>
+                                        <div class="liberta-balance-value">R$ 3.420</div>
+                                    </div>
+                                    <div class="liberta-cats">
+                                        <div class="liberta-cat">Alimentação<div class="liberta-cat-val">R$ 680</div></div>
+                                        <div class="liberta-cat">Transporte<div class="liberta-cat-val">R$ 320</div></div>
+                                        <div class="liberta-cat">Lazer<div class="liberta-cat-val">R$ 150</div></div>
+                                    </div>
+                                    <div class="liberta-chart">
+                                        <div class="liberta-bar" style="height:25%"></div>
+                                        <div class="liberta-bar" style="height:60%"></div>
+                                        <div class="liberta-bar" style="height:40%"></div>
+                                        <div class="liberta-bar" style="height:80%; background:var(--accent-main)"></div>
+                                        <div class="liberta-bar" style="height:55%"></div>
+                                        <div class="liberta-bar" style="height:35%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="badge">App Financeiro</div>
+                            <h3>Liberta</h3>
+                            <p>Gerenciador financeiro pessoal com foco em organização clara, categorização de despesas e acompanhamento de metas.</p>
+                            <ul class="project-features">
+                                <li>Controle de gastos</li>
+                                <li>Gráficos interativos</li>
+                                <li>Metas financeiras</li>
+                                <li>Design responsivo</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">UX/UI Design</span>
+                                <span class="tech-tag">Frontend</span>
+                                <span class="tech-tag">Backend</span>
+                            </div>
+                            <span class="status-tag">Projeto autoral</span>
+                        </div>
+                    </div>
+
+                    <!-- AssistX -->
+                    <div class="project-item fade-in">
+                        <div class="project-visual">
+                            <div class="assistx-mockup">
+                                <div class="assistx-sidebar">
+                                    <div class="assistx-sidebar-dot active"></div>
+                                    <div class="assistx-sidebar-dot"></div>
+                                    <div class="assistx-sidebar-dot"></div>
+                                    <div class="assistx-sidebar-dot"></div>
+                                </div>
+                                <div class="assistx-main">
+                                    <div class="assistx-header-row">
+                                        <div class="assistx-title">Atendimentos</div>
+                                        <div class="assistx-badge-online">● Online</div>
+                                    </div>
+                                    <div class="assistx-ticket">
+                                        <div class="assistx-ticket-avatar"></div>
+                                        <div>
+                                            <div class="assistx-ticket-name">Maria S.</div>
+                                            <div class="assistx-ticket-text">Preciso de ajuda com meu pedido…</div>
+                                        </div>
+                                        <div class="assistx-ticket-tag">Urgente</div>
+                                    </div>
+                                    <div class="assistx-ticket">
+                                        <div class="assistx-ticket-avatar"></div>
+                                        <div>
+                                            <div class="assistx-ticket-name">João P.</div>
+                                            <div class="assistx-ticket-text">Gostaria de atualizar meus dados</div>
+                                        </div>
+                                        <div class="assistx-ticket-tag pending">Pendente</div>
+                                    </div>
+                                    <div class="assistx-ticket">
+                                        <div class="assistx-ticket-avatar"></div>
+                                        <div>
+                                            <div class="assistx-ticket-name">Ana L.</div>
+                                            <div class="assistx-ticket-text">Obrigada, tudo resolvido!</div>
+                                        </div>
+                                        <div class="assistx-ticket-tag resolved">Resolvido</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="badge">Sistema & Automação</div>
+                            <h3>AssistX</h3>
+                            <p>Sistema de atendimento ao cliente com painel centralizado, automação de fluxos e relatórios em tempo real.</p>
+                            <ul class="project-features">
+                                <li>Painel centralizado</li>
+                                <li>Automação de rotinas</li>
+                                <li>Relatórios em tempo real</li>
+                                <li>Gestão de usuários</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Sistema Web</span>
+                                <span class="tech-tag">Integração API</span>
+                            </div>
+                            <span class="status-tag">Projeto autoral</span>
+                        </div>
+                    </div>
+
+                    <!-- PrimeDraw Pro -->
+                    <div class="project-item fade-in">
+                        <div class="project-visual">
+                            <div class="primedraw-mockup">
+                                <div class="primedraw-status"></div>
+                                <div class="primedraw-header">PrimeDraw Pro</div>
+                                <div class="primedraw-body">
+                                    <div class="primedraw-msg incoming">🎉 Sorteio #42 iniciado!</div>
+                                    <div class="primedraw-msg incoming">Participantes: 128</div>
+                                    <div class="primedraw-msg outgoing">/sortear</div>
+                                    <div class="primedraw-msg incoming">🏆 Ganhador: @lucas_dev</div>
+                                    <div class="primedraw-msg incoming">Parabéns! Prêmio enviado.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="badge">Automação (Bot)</div>
+                            <h3>PrimeDraw Pro</h3>
+                            <p>Sistema de sorteios integrado ao Telegram para comunidades, com gestão automatizada e resultados transparentes.</p>
+                            <ul class="project-features">
+                                <li>Integração Telegram</li>
+                                <li>Seleção automatizada</li>
+                                <li>Gestão automatizada</li>
+                                <li>Resultados públicos</li>
+                            </ul>
+                            <div class="project-tech">
+                                <span class="tech-tag">Bot</span>
+                                <span class="tech-tag">Node.js</span>
+                            </div>
+                            <span class="status-tag">Projeto autoral</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="github-banner fade-in">
+                    <div>
+                        <h4>Veja mais no GitHub</h4>
+                        <p>Explore outros projetos e repositórios de código aberto.</p>
+                    </div>
+                    <a href="https://github.com/Liperaaon" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                        Acessar GitHub
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESSO -->
+        <section id="processo" class="section bg-secondary">
+            <div class="container">
+                <div class="process-header max-w-xl text-center fade-in">
+                    <h2>Como trabalhamos</h2>
+                    <p>Um processo simples e transparente, do primeiro contato até a entrega.</p>
+                </div>
+                <div class="process-grid fade-in">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <h3>Entendimento</h3>
+                        <p>Conversamos sobre sua ideia, necessidade e objetivo.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <h3>Planejamento</h3>
+                        <p>Definimos funcionalidades, prazo e proposta comercial.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <h3>Desenvolvimento</h3>
+                        <p>Criamos, testamos e refinamos a solução.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <h3>Entrega e evolução</h3>
+                        <p>Publicamos e deixamos tudo pronto para futuras melhorias.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOBRE FELIPE -->
+        <section id="sobre" class="section">
+            <div class="container about-grid fade-in">
+                <div class="about-image-wrapper">
+                    <div class="about-image">
+                        <img src="https://i.postimg.cc/cJdyKcks/494151353-9655126271191690-7703902888335911926-n.jpg" alt="Felipe Augusto, fundador da Prim Studios" width="400" height="500" loading="lazy">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <div class="badge">Fundador e desenvolvedor</div>
+                    <h2>Sobre mim</h2>
+                    <p>Sou <strong>Felipe Augusto</strong>, desenvolvedor de software e fundador da Prim Studios. Transformo ideias em sites, aplicativos, sistemas e automações pensados para facilitar processos e criar novas oportunidades.</p>
+                    <p>Acompanho cada projeto de perto, desde o entendimento da ideia até a publicação, mantendo uma comunicação simples, direta e transparente.</p>
+                    <ul class="about-differentials">
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Atendimento direto comigo</li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Desenvolvimento personalizado</li>
+                        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>Projeto preparado para evoluir</li>
+                    </ul>
+                    <a href="https://wa.me/5511980125144?text=Olá%2C%20Felipe!%20Gostaria%20de%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Conversar com Felipe</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section bg-secondary">
+            <div class="container">
+                <div class="faq-header max-w-xl text-center fade-in">
+                    <h2>Perguntas frequentes</h2>
+                </div>
+                <div class="faq-container fade-in">
+                    <div class="faq-item">
+                        <button class="faq-button" aria-expanded="false" aria-controls="faq1">Vocês desenvolvem apenas sites?<span class="faq-icon"></span></button>
+                        <div class="faq-answer" id="faq1" role="region"><div class="faq-answer-inner"><p>Não. Além de sites e landing pages, criamos aplicativos, plataformas, sistemas internos, bots e automações. O tipo de projeto depende da sua necessidade.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button" aria-expanded="false" aria-controls="faq2">Preciso saber qual tecnologia utilizar?<span class="faq-icon"></span></button>
+                        <div class="faq-answer" id="faq2" role="region"><div class="faq-answer-inner"><p>Não. Você só precisa explicar sua ideia, necessidade ou problema. Eu analiso o projeto e escolho as tecnologias mais adequadas para desenvolvê-lo.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button" aria-expanded="false" aria-controls="faq3">Posso solicitar um projeto totalmente personalizado?<span class="faq-icon"></span></button>
+                        <div class="faq-answer" id="faq3" role="region"><div class="faq-answer-inner"><p>Sim. Projetos que não se encaixam em categorias comuns são desenvolvidos do zero, pensados especificamente para resolver o seu problema.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button" aria-expanded="false" aria-controls="faq4">Vocês trabalham com projetos que já existem?<span class="faq-icon"></span></button>
+                        <div class="faq-answer" id="faq4" role="region"><div class="faq-answer-inner"><p>Depende do caso. Muitas vezes é possível assumir a manutenção ou melhorar um projeto existente. Entre em contato para avaliarmos juntos.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button" aria-expanded="false" aria-controls="faq5">Como são definidos prazo e valor?<span class="faq-icon"></span></button>
+                        <div class="faq-answer" id="faq5" role="region"><div class="faq-answer-inner"><p>Prazo e investimento dependem da complexidade do projeto. Após a primeira conversa, envio uma proposta detalhada com tudo o que está incluído.</p></div></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-button" aria-expanded="false" aria-controls="faq6">Existe suporte após a entrega?<span class="faq-icon"></span></button>
+                        <div class="faq-answer" id="faq6" role="region"><div class="faq-answer-inner"><p>Sim. Ofereço acompanhamento inicial e opções de manutenção contínua para que tudo continue funcionando bem.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="section">
+            <div class="container">
+                <div class="cta-final fade-in">
+                    <h2 class="max-w-xl text-center mb-16">Sua ideia pode ser o próximo projeto da Prim Studios.</h2>
+                    <p class="max-w-lg text-center mb-32">Conte o que você deseja criar e vamos encontrar a melhor forma de transformar isso em realidade.</p>
+                    <div class="cta-actions">
+                        <a href="https://wa.me/5511980125144?text=Olá%2C%20Felipe!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20um%20projeto." target="_blank" rel="noopener noreferrer" class="btn btn-white">Solicitar orçamento pelo WhatsApp</a>
+                        <a href="https://github.com/Liperaaon" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">Ver portfólio no GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+        <footer class="site-footer">
+            <div class="container footer-grid">
+                <!-- Logo & descrição -->
+                <div class="footer-brand">
+                    <a href="#" class="logo" aria-label="Prim Studios — Home">
+                        <img src="https://i.postimg.cc/Xv6NsF2K/logo.png" alt="Prim Studios" width="140" height="56" loading="lazy">
+                    </a>
+                    <p>Transformamos ideias em produtos digitais que impulsionam negócios.</p>
+                </div>
+                <!-- Navegação -->
+                <nav class="footer-nav" aria-label="Navegação do rodapé">
+                    <h3 class="footer-title">Navegação</h3>
+                    <ul class="footer-links">
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#projetos">Projetos</a></li>
+                        <li><a href="#processo">Processo</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                    </ul>
+                </nav>
+                <!-- Contato & redes -->
+                <div class="footer-contact">
+                    <h3 class="footer-title">Contato</h3>
+                    <p><a href="mailto:felipe_mx@hotmail.com">felipe_mx@hotmail.com</a></p>
+                    <p><a href="https://primstudios.com.br" target="_blank" rel="noopener noreferrer">primstudios.com.br</a></p>
+                    <div class="footer-socials">
+                        <a href="https://www.linkedin.com/in/liperaon/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7 0h4.8v2.2h.07c.67-1.27 2.31-2.6 4.74-2.6 5.07 0 6 3.34 6 7.68V24h-5v-8.5c0-2.02-.04-4.62-2.81-4.62-2.81 0-3.24 2.2-3.24 4.48V24h-5V8z"/></svg>
+                        </a>
+                        <a href="https://github.com/Liperaaon" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="social-icon">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73 .5 .5 5.73 .5 12c0 5.08 3.29 9.38 7.86 10.89.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2 .7-3.88-1.55-3.88-1.55-.52-1.33-1.27-1.68-1.27-1.68-1.04-.71.08-.7 .08-.7 1.15 .08 1.75 1.18 1.75 1.18 1.02 1.75 2.68 1.24 3.33 .95 .1-.74 .4-1.24 .73-1.53-2.55-.29-5.23-1.28-5.23-5.71 0-1.26 .45-2.29 1.18-3.09-.12-.29-.51-1.46 .11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 012.88-.39c.97 0 1.95 .13 2.88 .39 2.19-1.49 3.15-1.18 3.15-1.18 .62 1.58 .24 2.75 .12 3.04 .73 .8 1.18 1.83 1.18 3.09 0 4.44-2.69 5.42-5.25 5.71 .41 .36 .78 1.07 .78 2.15 0 1.55-.01 2.8-.01 3.18 0 .31 .21 .68 .8 .56A10.5 10.5 0 0023.5 12c0-6.27-5.23-11.5-11.5-11.5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2026 Prim Studios. Todos os direitos reservados.</div>
+            </div>
+        </footer>
+
+    <!-- FAB WHATSAPP -->
+    <a href="https://wa.me/5511980125144?text=Olá%2C%20Felipe!%20Conheci%20a%20Prim%20Studios%20pelo%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" class="fab-whatsapp" aria-label="Falar no WhatsApp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span>Falar no WhatsApp</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Menu Mobile
+            const menuBtn = document.getElementById('menuBtn');
+            const navLinks = document.getElementById('navLinks');
+
+            if (menuBtn && navLinks) {
+                const toggleMenu = (forceClose = false) => {
+                    const isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+                    if (forceClose && !isOpen) return;
+
+                    const willOpen = forceClose ? false : !isOpen;
+                    menuBtn.setAttribute('aria-expanded', String(willOpen));
+                    menuBtn.setAttribute('aria-label', willOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
+                    
+                    if (willOpen) {
+                        navLinks.classList.add('active');
+                        document.body.classList.add('menu-open');
+                    } else {
+                        navLinks.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                        menuBtn.focus();
+                    }
+                };
+
+                menuBtn.addEventListener('click', () => toggleMenu());
+
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (navLinks.classList.contains('active')) toggleMenu(true);
+                    });
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && navLinks.classList.contains('active')) toggleMenu(true);
+                });
+
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth > 768 && navLinks.classList.contains('active')) toggleMenu(true);
+                });
+            }
+
+            // 2. Header scroll
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    header.classList.toggle('scrolled', window.scrollY > 10);
+                }, { passive: true });
+            }
+
+            // 3. FAQ
+            const faqButtons = document.querySelectorAll('.faq-button');
+            faqButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const wasOpen = button.getAttribute('aria-expanded') === 'true';
+                    const answer = button.nextElementSibling;
+
+                    // Fecha todos
+                    faqButtons.forEach(btn => {
+                        btn.setAttribute('aria-expanded', 'false');
+                        if (btn.nextElementSibling) btn.nextElementSibling.style.maxHeight = null;
+                    });
+
+                    // Abre se estava fechado
+                    if (!wasOpen && answer) {
+                        button.setAttribute('aria-expanded', 'true');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                faqButtons.forEach(btn => {
+                    if (btn.getAttribute('aria-expanded') === 'true') {
+                        const answer = btn.nextElementSibling;
+                        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
+            });
+
+            // 4. Fade-in com IntersectionObserver
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const fadeEls = document.querySelectorAll('.fade-in');
+
+            if (!reducedMotion) {
+                const obs = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+                fadeEls.forEach(el => obs.observe(el));
+            } else {
+                fadeEls.forEach(el => { el.classList.add('visible'); });
+            }
+        });
+    </script>
+</body>
+</html>
